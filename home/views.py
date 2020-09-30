@@ -24,7 +24,7 @@ def contact(request):
         else: 
             contact = Contact(name=name, email=email, phone=phone, content=content)
             contact.save()
-            messages.success(request, " Your message hass been sent")
+            messages.success(request, " Your message hass been successfully  sent....")
     return render(request, 'home/contact.html') 
 
 def search(request):
@@ -39,7 +39,7 @@ def search(request):
         allPosts = allPostsTitle.union(allPostsContent,allPostsAuthor,allPostsTimestamp)
 
     if allPosts.count() == 0:
-        messages.warning(request, " No search result found. Please refine your query")
+        messages.warning(request, " No search result found. Please refine your query ...")
     params = {'allPosts': allPosts, 'query': query} 
     return render(request, 'home/search.html', params)
     
@@ -76,7 +76,7 @@ def handleSignup(request):
         myuser.last_name = lname
         myuser.cpassword = cpassword
         myuser.save()
-        messages.success(request, ' Your iCoder account wil be successfully created')
+        messages.success(request, ' Your iCoder account will be successfully created')
         return redirect('home')
     else:
         return HttpResponse('404 - Not Found')
